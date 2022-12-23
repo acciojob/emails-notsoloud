@@ -21,30 +21,30 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
-//        if(Inbox.size() == inboxCapacity){
-//            Triple<Date, String, String> oldestMail = Inbox.get(0);
-//            Inbox.remove(0);
-//            Trash.add(oldestMail);
-//        }
-//        Triple<Date, String, String> mail = Triple.of(date, sender, message);
-//        Inbox.add(mail);
+        if(Inbox.size() == inboxCapacity){
+            Triple<Date, String, String> oldestMail = Inbox.get(0);
+            Inbox.remove(0);
+            Trash.add(oldestMail);
+        }
+        Triple<Date, String, String> mail = Triple.of(date, sender, message);
+        Inbox.add(mail);
     }
 
     public void deleteMail(String message){
         // Each message is distinct
         // If the given message is found in the inbox, move the mail to trash, else do nothing
-//        int index = -1;
-//        for(int i = 0; i<Inbox.size(); i++){
-//            if(message.equals(Inbox.get(i).getRight())){
-//                index = i;
-//                break;
-//            }
-//        }
-//
-//        if(index != -1){
-//            Trash.add(Inbox.get(index));
-//            Inbox.remove(index);
-//        }
+        int index = -1;
+        for(int i = 0; i<Inbox.size(); i++){
+            if(message.equals(Inbox.get(i).getRight())){
+                index = i;
+                break;
+            }
+        }
+
+        if(index != -1){
+            Trash.add(Inbox.get(index));
+            Inbox.remove(index);
+        }
     }
 
     public String findLatestMessage(){
